@@ -1,0 +1,46 @@
+spring:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    timeout: 10000
+    lettuce:
+      pool:
+        max-active: 1000
+        max-idle: 500
+        min-idle: 100
+        max-wait: 5000
+# 流控
+flow:
+  limiter:
+    enabled: true
+    instances:
+      reg:
+        algorithm: sliding-window-log
+        limitType: customized
+        sliding-window-log:
+          period: 1
+          count: 1
+      # 就诊人
+      pat:
+        algorithm: token-bucket
+        limitType: customized
+        token-bucket:
+          replenishRate: 1
+          burstCapacity: 1
+          requestedTokens: 1
+      sch:
+        algorithm: fixed-window
+        limitType: customized
+        fixed-window:
+          period: 1
+          count: 1
+      leaky:
+        algorithm: leaky-bucket
+        limitType: customized
+        leaky-bucket:
+          capacity: 1
+          leakingRate: 1
+    fallback:
+      code: 600212200015001
+      message: 请求频繁，请稍后再试

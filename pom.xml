@@ -15,6 +15,7 @@
     <description>rateLimiter-sample for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
+        <ratelimiter-spring-boot-starter.version>1.0.0-SNAPSHOT</ratelimiter-spring-boot-starter.version>
     </properties>
     <dependencies>
         <dependency>
@@ -42,6 +43,13 @@
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <!-- 流控模块 -->
+        <dependency>
+            <groupId>com.open.onebyte</groupId>
+            <artifactId>ratelimiter-spring-boot-starter</artifactId>
+            <version>${ratelimiter-spring-boot-starter.version}</version>
         </dependency>
     </dependencies>
 

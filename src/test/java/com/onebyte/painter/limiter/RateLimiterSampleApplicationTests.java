@@ -10,4 +10,9 @@ class RateLimiterSampleApplicationTests {
     void contextLoads() {
     }
 
+    @Test
+    void anyTest() {
+        System.out.println(System.currentTimeMillis());
+    }
+
 }
